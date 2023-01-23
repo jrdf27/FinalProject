@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col-md-8">
+        <form name="addData" method="post" id="addData" class="form"
+              action="<?php echo $this->getFormAction(); ?>"
+              data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+              data-mage-init='{"validation":{}}'>
+            <fieldset class="fieldset">
+                <?php    echo "TEST";     ?>
+                <legend class="legend"><span><?= $block->escapeHtmlAttr(__('Fill Detail')) ?></span></legend>
+                <fieldset class="fieldset row">
+                    <div class="fields col-md-6">
+                        <div class="field name required">
+                            <label class="label" for="title"><span><?= $block->
+                                escapeHtmlAttr(__('First_Name')) ?></span></label>
+                            <div class="control">
+                                <input name="first_name" id="first_name" title="First_Name" value="" class="input-text" type="text"
+                                       data-validate="{required:true, 'validate-alphanum-with-spaces':true}">
+                            </div>
+                        </div>
+                        <div class="field last_name required">
+                            <label class="label" for="title"><span><?= $block->
+                                escapeHtmlAttr(__('Last_Name')) ?></span></label>
+                            <div class="control">
+                                <input name="last_name" id="last_name" title="Last_Name" value="" class="input-text" type="text"
+                                       data-validate="{required:true, 'validate-alphanum-with-spaces':true}">
+                            </div>
+                        </div>
+                        <div class="field name required">
+                            <label class="label" for="title"><span><?= $block->
+                                escapeHtmlAttr(__('Email')) ?></span></label>
+                            <div class="control">
+                                <input name="email" id="email" title="Email" value="" class="input-text" type="text"
+                                       data-validate="{required:true, 'validate-email':true}">
+                            </div>
+                        </div>
+                        <div class="field name required">
+                            <label class="label" for="title"><span><?= $block->escapeHtmlAttr(__('Telephone')) ?></span></label>
+                            <div class="control">
+                                <input name="telephone" id="telephone" title="Telephone" value="" class="input-text"
+                                       type="text" data-validate="{required:true}">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary" title="Save"><span><?= $block->
+                        escapeHtmlAttr(__('Save')) ?></span></button>
+                </div>
+            </div>
+        </form>
+        <div>
+      
+    </div>
+    </div>
+</div>
+
+<?php
+    //$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); 
+    //$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+
+    
+    $customer =  $this->getCustomerName();
+   // echo $customer->getName(); //Get value from customer session
+
+?>
+<div class="alert-modal-content">
+    <p>Bienvenido!.</p>
+    <?php echo "My "."User ".$customer; ?>
+</div>
+
+
+<script>
+require([
+    'jquery',
+    'Magento_Ui/js/modal/alert'
+], function ($) {
+    'use strict';
+
+    $('.alert-modal-content').alert({
+        title: 'Alert Title',
+        modalClass: 'alert',
+        actions: {
+            always: function() {
+                // do something when the modal is closed
+            }
+        },
+        buttons: [{
+            text: $.mage.__('Accept'),
+            class: 'action primary accept',
+
+            /**
+             * Click handler.
+             */
+            click: function () {
+                this.closeModal(true);
+            }
+        }, {
+            text: $.mage.__('New Action'),
+            class: 'action',
+
+            /**
+             * Click handler.
+             */
+            click: function () {
+                // New action
+            }
+        }]
+    });
+});
+</script>
